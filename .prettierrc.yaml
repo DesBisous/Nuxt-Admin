@@ -1,0 +1,5 @@
+semi: true # 使用分号, 默认true
+singleQuote: true # 使用单引号
+trailingComma: es5 # 行尾逗号
+tabWidth: 2 # tab缩进大小,默认为2
+useTabs: true # 使用tab缩进，默认false

@@ -1,0 +1,92 @@
+@import './style.less';
+
+// 按钮样式
+button {
+  &.success {
+    color: #fff;
+    background: @dark-green;
+    border-color: @dark-green;
+    &:hover,
+    &:focus {
+      color: #fff;
+      background: #41d0cf;
+      border-color: #41d0cf;
+    }
+    &:active {
+      color: #fff;
+      background: @dark-green;
+      border-color: @dark-green;
+    }
+  }
+}
+// 文本样式
+.danger-text {
+  color: @danger !important;
+}
+.success-text {
+  color: @dark-green !important;
+}
+// 文本布局
+.text-right {
+  text-align: right;
+}
+// 表格全局样式
+.tabel-header-cell {
+  color: @font-color-main;
+  background-color: @background-gray !important;
+}
+/* 清除浮动 */
+.clearfix:after {
+  display: block;
+  content: '.';
+  height: 0;
+  visibility: hidden;
+  clear: both;
+  font-size: 0;
+  line-height: 0;
+}
+/* *后面的属性 IE6 IE7能识别，IE8 IE9……都不能识别； */
+.clearfix {
+  *zoom: 1;
+}
+.pagination {
+  &.pagination-list {
+    text-align: right;
+    margin-top: 16px;
+  }
+  &.pagination-center {
+    text-align: center;
+  }
+}
+/* 下拉菜单 */
+.el-dropdown, .el-dropdown-link {
+  &:focus {
+    outline: none;
+  }
+}
+.el-dropdown-menu__item {
+	i {
+		vertical-align: middle;
+	}
+}
+/* 过渡动画 */
+.page-enter-active, .page-leave-active{
+  transition: all .5s;
+}
+.page-enter {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+.page-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+.fade-enter-active, .fade-leave-active{
+  transition: all .5s;
+}
+.fade-enter {
+  opacity: 0;
+}
+.fade-leave-to {
+  opacity: 0;
+}

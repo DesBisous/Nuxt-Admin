@@ -1,0 +1,46 @@
+{
+	"name": "nuxt-admin",
+	"version": "1.0.0",
+	"description": "Nuxt_管理后台_v1.0.0",
+	"author": "晓滨 <919624732@qq.com>",
+	"private": true,
+	"scripts": {
+		"dev": "cross-env NODE_ENV=dev nuxt",
+		"build": "cross-env NODE_ENV=prod nuxt build",
+		"build-analyze": "cross-env NODE_ENV=prod nuxt build --analyze",
+		"start": "cross-env NODE_ENV=prod nuxt start",
+		"generate": "cross-env NODE_ENV=prod nuxt generate",
+		"deployment": "deployator deploy --config deployment-config.js --environment nginx",
+		"deploy": "node deploy.js"
+	},
+	"dependencies": {
+		"@nuxtjs/axios": "^5.3.6",
+		"cross-env": "^5.2.0",
+		"echarts": "^4.2.1",
+		"element-ui": "^2.10.1",
+		"nuxt": "^2.4.0",
+		"vue-i18n": "^8.11.2",
+		"vuescroll": "^4.13.0",
+		"wangeditor": "^3.1.1"
+	},
+	"devDependencies": {
+		"babel-eslint": "^10.0.1",
+		"babel-plugin-component": "^1.1.1",
+		"deployator": "^1.7.2",
+		"eslint": "^5.16.0",
+		"eslint-config-airbnb-base": "^13.1.0",
+		"eslint-config-prettier": "^4.1.0",
+		"eslint-friendly-formatter": "^4.0.1",
+		"eslint-import-resolver-nuxt": "^0.1.3",
+		"eslint-loader": "^2.1.2",
+		"eslint-plugin-html": "^5.0.3",
+		"eslint-plugin-import": "^2.17.2",
+		"eslint-plugin-prettier": "^3.0.1",
+		"eslint-plugin-promise": "^4.1.1",
+		"eslint-plugin-vue": "^5.2.2",
+		"less": "^3.9.0",
+		"less-loader": "^5.0.0",
+		"nodemon": "^1.18.9",
+		"prettier": "^1.16.4"
+	}
+}

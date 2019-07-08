@@ -1,0 +1,129 @@
+// 元素图标
+.iconImg(@url) {
+  background-image: url(@url);
+  background-position: 0 0;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+// 上下左右居中
+.center() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+// flex布局居中
+.flexCenter() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+// 左箭头
+// @width 宽度
+// @borderWidth 箭头边框宽度
+// @color 箭头颜色
+.arrowLeft(@width, @borderWidth, @color) {
+  position: relative;
+  &:after {
+    content: '';
+    .center();
+    margin-top: -@width / 2;
+    width: @width;
+    height: @width;
+    border-left: @borderWidth solid @color;
+    border-top: @borderWidth solid @color;
+    transform: rotate(-45deg);
+  }
+}
+// 右箭头
+.arrowRight(@width, @borderWidth, @color) {
+  .arrowLeft(@width, @borderWidth, @color);
+  &:after {
+    transform: rotate(135deg);
+  }
+}
+// 下箭头
+.arrowBottom(@width, @borderWidth, @color) {
+  .arrowLeft(@width, @borderWidth, @color);
+  &:after {
+    transform: rotate(-135deg);
+  }
+}
+// 上箭头
+.arrowTop(@width, @borderWidth, @color) {
+  .arrowLeft(@width, @borderWidth, @color);
+  &:after {
+    transform: rotate(45deg);
+  }
+}
+// 绝对一像素下边框
+.borderBottom1px(@color) {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    transform: scaleY(0.5);
+    background-color: @color;
+  }
+}
+// 绝对一像素上边框
+.borderTop1px(@color) {
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    transform: scaleY(0.5);
+    background-color: @color;
+  }
+}
+// 绝对一像素右边框
+.borderRight1px(@color) {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    transform: scaleX(0.5);
+    background-color: @color;
+  }
+}
+// 绝对一像素右边框
+.borderLeft1px(@color) {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    transform: scaleX(0.5);
+    background-color: @color;
+  }
+}
+// 文字溢出隐藏
+.ellipsis() {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.ellipsisLine(@line) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /*! autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  /* autoprefixer: on */
+  -webkit-line-clamp: @line;
+}

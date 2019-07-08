@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  /* -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none; */
+  font-family: 宋体, 微软雅黑, Arial, Verdana, arial, serif;
+  /* font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
+    Microsoft YaHei, SimSun, serif; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  vertical-align: top;
+  border: 0;
+}
+
+input,
+textarea {
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  -webkit-appearance: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: 0;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='search'],
+input[type='tel'],
+input[type='number'],
+input[type='email'],
+input[type='url'],
+textarea {
+  -webkit-appearance: none;
+}
+
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type='radio' i] {
+  -webkit-appearance: radio;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  -webkit-touch-callout: none;
+}
+
+em,
+i {
+  font-style: normal;
+}
+
+li {
+  list-style: none;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+  background-color: #f0f2f5;
+  letter-spacing: 0.45px;
+}
+body {
+  overflow: hidden;
+  height: 100vh;
+}
+#__nuxt, #__layout {
+  height: 100%;
+}
