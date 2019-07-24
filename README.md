@@ -1,10 +1,10 @@
-# Nuxt-Admin
+# safety-center
 
-> Nuxt 管理后台开箱即用架子
+> My first-class Nuxt.js project
 
 ## Build Setup
 
-```bash
+``` bash
 # install dependencies
 $ yarn install
 

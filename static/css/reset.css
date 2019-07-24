@@ -76,6 +76,7 @@ body {
   overflow: hidden;
   height: 100vh;
 }
-#__nuxt, #__layout {
+#__nuxt, #__layout, .warp {
   height: 100%;
+  overflow: hidden;
 }

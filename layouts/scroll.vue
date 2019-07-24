@@ -8,7 +8,10 @@
 		>
 		</TopBar>
 		<el-main>
-			<nuxt />
+			<VueScroll>
+				<nuxt />
+				<el-backtop target=".__vuescroll .__panel"></el-backtop>
+			</VueScroll>
 		</el-main>
 	</el-container>
 </template>

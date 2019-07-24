@@ -1,5 +1,5 @@
 <template>
-	<el-container>
+	<el-container class="warp">
 		<SideBar
 			_key="safety"
 			title="安全中心"
@@ -7,14 +7,17 @@
 			collapseKey="safetyCollapse"
 			:isCtrlCollapse="true"
 		/>
-		<el-container direction="vertical" class="safety-container">
-			<Breadcrumb />
-			<Tabs />
-			<el-main>
-				<nuxt-child keep-alive :keep-alive-props="keepAliveProps" />
-			</el-main>
-			<Footer />
-		</el-container>
+		<VueScroll>
+			<el-container direction="vertical" class="safety-container">
+				<Breadcrumb />
+				<Tabs />
+				<el-main>
+					<nuxt-child keep-alive :keep-alive-props="keepAliveProps" />
+				</el-main>
+				<Footer />
+			</el-container>
+			<el-backtop target=".__vuescroll .__panel"></el-backtop>
+		</VueScroll>
 	</el-container>
 </template>
 
@@ -27,6 +30,7 @@ import menusJson from '~/data/menus';
 import { mapGetters } from 'vuex';
 
 export default {
+	name: 'safety',
 	transition: 'fade',
 	components: {
 		SideBar,

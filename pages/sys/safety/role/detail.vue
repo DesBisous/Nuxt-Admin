@@ -103,6 +103,7 @@
 		</HContainer>
 		<FixButton
 			idResize="role-detail"
+			scrollDomStr="__panel"
 			@okEvent="handleOk"
 			@cancelEvent="handleCancel"
 		></FixButton>

@@ -7,14 +7,17 @@
 			collapseKey="demoCollapse"
 			:isCtrlCollapse="true"
 		/>
-		<el-container direction="vertical" class="demo-container">
-			<Breadcrumb />
-			<Tabs />
-			<el-main>
-				<nuxt-child keep-alive :keep-alive-props="keepAliveProps" />
-			</el-main>
-			<Footer />
-		</el-container>
+		<VueScroll>
+			<el-container direction="vertical" class="demo-container">
+				<Breadcrumb />
+				<Tabs />
+				<el-main>
+					<nuxt-child keep-alive :keep-alive-props="keepAliveProps" />
+				</el-main>
+				<Footer />
+			</el-container>
+			<el-backtop target=".__vuescroll .__panel"></el-backtop>
+		</VueScroll>
 	</el-container>
 </template>
 

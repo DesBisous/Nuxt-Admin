@@ -8,7 +8,7 @@
 import { userApi } from '~/api';
 
 export default {
-	// layout: 'horizontal',
+	layout: 'scroll',
 	mounted() {
 		const data = {
 			start: 1,
@@ -16,8 +16,14 @@ export default {
 		};
 		// 采用这种
 		// userApi.getListAll(this.$axios, data).then(res => {
-		//   console.log('res: ', res);
+		// 	console.log('res: ', res);
 		// });
+		// userApi.getCorssDomain(this.$axios, data).then(res => {
+		// 	console.log('res: ', res);
+		// });
+		userApi.getJsonpCorssDomain(this.$jsonp, data).then(res => {
+			console.log('res: ', res);
+		});
 	},
 };
 </script>

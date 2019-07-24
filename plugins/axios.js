@@ -1,17 +1,26 @@
+import { judgeCORS } from '~/lib/common';
+
 export default app => {
 	const axios = app.$axios;
 
 	// 基本配置
 	axios.defaults.timeout = 30000;
 
-	// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 	axios.defaults.headers = {
 		Accept: 'application/json',
 		'Content-Type': 'application/json',
+		// 'Content-Type': 'multipart/form-data;charset=UTF-8', // 文件上传
+		// 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8', // 二进制流
 	};
 
 	// 添加请求拦截器
-	axios.onRequest(config => config);
+	axios.onRequest(config => {
+		// 是否跨域
+		if (judgeCORS(config.url)) {
+			return Promise.reject(new Error('CORS policy warning'));
+		}
+		return config;
+	});
 
 	// 添加响应拦截器
 	axios.onResponse(res => ({
@@ -47,6 +56,15 @@ export default app => {
 				errorMsg = '请求超时';
 			} else {
 				errorMsg = '请求失败';
+			}
+		} else if (error.message) {
+			switch (error.message) {
+				case 'CORS policy warning':
+					errorMsg =
+						'Axois 不支持跨域，请采用跨域方案[Jsonp、Webpack Proxy、CORS、YQL、服务反向代理...]';
+					break;
+				default:
+					errorMsg = error.message;
 			}
 		}
 		return {

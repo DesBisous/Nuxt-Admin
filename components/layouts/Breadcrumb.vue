@@ -14,6 +14,7 @@
 <script>
 import menusJson from '~/data/menus';
 import { mapGetters } from 'vuex';
+import { getItemByRecursion } from '~/lib/common';
 
 export default {
 	name: 'breadcrumb',
@@ -29,7 +30,12 @@ export default {
 	},
 	methods: {
 		recursion(name) {
-			const ctab = menusJson[this.system].find(tab => tab.name === name);
+			const ctab = getItemByRecursion(
+				menusJson[this.system],
+				'children',
+				'name',
+				name
+			);
 			if (ctab) {
 				if (ctab.meta.parentName) {
 					const parentTab = menusJson[this.system].find(

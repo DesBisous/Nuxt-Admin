@@ -4,6 +4,7 @@
 			<nuxt />
 			<Footer absolute />
 		</div>
+		<el-backtop target=".__vuescroll .__panel"></el-backtop>
 	</VueScroll>
 </template>
 

@@ -4,17 +4,12 @@
  * @return     [description]
  */
 export const brokerageSettleState = val => {
-	let state = '';
 	switch (val) {
 		case '0':
-			state = '未结算';
-			break;
+			return '未结算';
 		case '1':
-			state = '已结算';
-			break;
+			return '已结算';
 		default:
-			state = '';
-			break;
+			return val;
 	}
-	return state;
 };

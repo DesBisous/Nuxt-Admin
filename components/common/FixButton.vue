@@ -43,6 +43,10 @@ export default {
 			type: String,
 			default: 'down',
 		},
+		scrollDomStr: {
+			type: String,
+			default: '',
+		},
 	},
 	data() {
 		return {
@@ -51,11 +55,26 @@ export default {
 			fixDown: false, // 按钮是否固定在底部
 			timeoutId: null,
 			containerWidth: 'auto', // 按钮容器宽度
+			scrollDom: null, // 存储滚动对象
+			setTimeout: null,
 		};
 	},
 	mounted() {
 		// 事件监听滚动条
-		window.addEventListener('scroll', this.watchScroll);
+		if (this.scrollDomStr) {
+			let dom = document.getElementsByClassName(this.scrollDomStr)[0];
+			if (dom) {
+				this.scrollDom = dom;
+			} else {
+				dom = document.getElementById(this.scrollDomStr);
+				if (dom) {
+					this.scrollDom = dom;
+				}
+			}
+		} else {
+			this.scrollDom = window;
+		}
+		this.scrollDom.addEventListener('scroll', this.watchScroll);
 		window.addEventListener('resize', this.handleTimeout, false);
 		this.$nextTick(() => {
 			// 初始获取窗口高度
@@ -64,6 +83,9 @@ export default {
 			this.initTop = this.$refs.fixButton.offsetTop;
 			this.watchScroll();
 			this.calculatWidth();
+			this.setTimeout = setTimeout(() => {
+				this.calculatWidth();
+			}, 400);
 		});
 	},
 	methods: {
@@ -75,9 +97,11 @@ export default {
 		},
 		watchScroll() {
 			const scrollTop =
-				window.pageYOffset ||
-				document.documentElement.scrollTop ||
-				document.body.scrollTop;
+				this.scrollDom === window
+					? window.pageYOffset ||
+					  document.documentElement.scrollTop ||
+					  document.body.scrollTop
+					: this.scrollDom.scrollTop;
 			if (this.direction === 'down') {
 				if (scrollTop > this.initTop - this.winHeight) {
 					this.fixDown = false;
@@ -105,6 +129,7 @@ export default {
 		// 注销事件
 		window.removeEventListener('scroll', this.watchScroll);
 		window.removeEventListener('resize', this.handleTimeout);
+		this.setTimeout && clearTimeout(this.setTimeout);
 	},
 };
 </script>

@@ -30,9 +30,13 @@
 						</el-tooltip>
 					</div>
 					<div class="user">
-						<el-dropdown @command="handleCommand">
+						<el-dropdown @command="handleCommand" trigger="click">
 							<div class="el-dropdown-link">
-								<img src="~/assets/images/user.png" alt="" />
+								<LazyImage
+									class="img-container"
+									:src="require('~/assets/images/user.png')"
+									placeholder=""
+								/>
 								<strong>钢铁侠</strong>
 							</div>
 							<el-dropdown-menu slot="dropdown">
@@ -184,6 +188,7 @@ export default {
 			} else if (this.leftBlockWidth + this.initRightBlockWidth < bodyWidth) {
 				this.horizontalMenu = true;
 				this.verticalMenu = false;
+				this.verticalMenuOpen = false;
 			}
 		},
 		resizeEvent() {
@@ -309,7 +314,7 @@ export default {
 			align-items: center;
 			display: flex;
 		}
-		img {
+		.img-container {
 			width: 35px;
 			height: 35px;
 			border-radius: 50%;

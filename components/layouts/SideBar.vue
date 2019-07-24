@@ -1,6 +1,7 @@
 <script>
 import menusJson from '~/data/menus';
 import { mapActions } from 'vuex';
+import { getItemByRecursion } from '~/lib/common';
 
 export default {
 	name: 'sideBar',
@@ -51,6 +52,7 @@ export default {
 		return {
 			region: 'large', // width > 980 -> large、 580 < width <= 980 -> small、 width <= 580 -> mini
 			miniOpen: 'close',
+			prevPath: '', // 记录点击后的路由地址
 		};
 	},
 	methods: {
@@ -59,6 +61,7 @@ export default {
 			modifyCollapseByParams: 'sideBar/modifyCollapseByParams',
 		}),
 		onSelect(index, path) {
+			this.prevPath = index;
 			this.$emit('callback', index);
 		},
 		handleMiniOpen() {
@@ -165,6 +168,14 @@ export default {
 	render() {
 		const menu = menusJson[this._key];
 		const dom = this.recursion(menu, '0');
+		// 根据当前地址找路由配置项
+		const r = getItemByRecursion(menu, 'children', 'path', this.$route.path);
+		// 未找到就是用上一次的激活项
+		let active = this.prevPath;
+		// 找到了就根据 light 配置来判断激活项
+		if (r) {
+			active = r.meta && r.meta.light ? r.meta.light : r.path;
+		}
 		return (
 			<aside class={this.mode} style={this.asideStyle}>
 				<el-menu
@@ -172,7 +183,7 @@ export default {
 					collapse={this.collapse}
 					background-color="#001529"
 					text-color="hsla(0,0%,100%,.65)"
-					default-active={this.$route.meta.light || this.$route.path}
+					default-active={active}
 					class={`el-menu-vertical ${this.size} ${this.region} ${
 						this.miniOpen
 					}`}

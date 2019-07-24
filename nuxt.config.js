@@ -26,7 +26,7 @@ export default {
 	 ** Headers of the page
 	 */
 	head: {
-		title: 'Nuxt Admin',
+		title: '安全中心',
 		meta: [
 			{ charset: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -56,6 +56,7 @@ export default {
 		// { src: '~/plugins/i18n.js' },
 		{ src: '~plugins/echarts', ssr: false },
 		{ src: '~plugins/element-ui', ssr: true },
+		{ src: '~plugins/jsonp', ssr: false },
 		{ src: '~plugins/axios' },
 		{ src: '~plugins/vuescroll' },
 		{ src: '~plugins/index' },

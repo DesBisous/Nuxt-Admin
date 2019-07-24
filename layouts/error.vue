@@ -14,9 +14,9 @@ export default {
 
 <style lang="less" scoped>
 .empty {
-	margin: 100px auto 0;
-	padding-bottom: 50px;
+	padding: 100px 0 50px;
 	max-width: 1280px;
+	margin: auto;
 }
 .img {
 	margin: 0 auto;
