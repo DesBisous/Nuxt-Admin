@@ -8,7 +8,7 @@
 
 <script>
 export default {
-	name: 'info',
+	name: 'Info',
 	props: {
 		justifyContent: {
 			type: String,

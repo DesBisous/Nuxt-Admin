@@ -8,7 +8,7 @@
 /* eslint-disable global-require */
 
 export default {
-	name: 'editor',
+	name: 'Editor',
 	props: {
 		html: {
 			type: String,

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-	name: 'lightLine',
+	name: 'LightLine',
 };
 </script>
 

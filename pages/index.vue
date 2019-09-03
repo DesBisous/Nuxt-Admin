@@ -18,12 +18,12 @@ export default {
 		// userApi.getListAll(this.$axios, data).then(res => {
 		// 	console.log('res: ', res);
 		// });
-		// userApi.getCorssDomain(this.$axios, data).then(res => {
-		// 	console.log('res: ', res);
-		// });
-		userApi.getJsonpCorssDomain(this.$jsonp, data).then(res => {
+		userApi.getCorssDomain(this.$axios, data).then(res => {
 			console.log('res: ', res);
 		});
+		// userApi.getJsonpCorssDomain(this.$jsonp, data).then(res => {
+		// 	console.log('res: ', res);
+		// });
 	},
 };
 </script>

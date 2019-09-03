@@ -56,6 +56,7 @@
 				<el-form-item label="应用图片:" prop="img">
 					<Upload
 						avatarSize="small"
+						fileType="bmp,jpg,png,gif,svg"
 						:imageUrl="appForm.img"
 						@uploadCallBack="uploadCallBack"
 					></Upload>

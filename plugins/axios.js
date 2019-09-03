@@ -1,4 +1,5 @@
 import { judgeCORS } from '~/lib/common';
+import qs from 'qs';
 
 export default app => {
 	const axios = app.$axios;
@@ -9,15 +10,26 @@ export default app => {
 	axios.defaults.headers = {
 		Accept: 'application/json',
 		'Content-Type': 'application/json',
-		// 'Content-Type': 'multipart/form-data;charset=UTF-8', // 文件上传
-		// 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8', // 二进制流
 	};
 
 	// 添加请求拦截器
-	axios.onRequest(config => {
+	axios.onRequest(options => {
+		const config = options;
+		console.log(qs);
+		debugger;
 		// 是否跨域
 		if (judgeCORS(config.url)) {
 			return Promise.reject(new Error('CORS policy warning'));
+		}
+		// 表单提交
+		if (config.form) {
+			config.data = qs.stringify(config.data);
+			config.headers['Content-Type'] =
+				'application/x-www-form-urlencoded;charset=UTF-8';
+		}
+		// 文件上传
+		if (config.file) {
+			config.headers['Content-Type'] = 'multipart/form-data;charset=UTF-8';
 		}
 		return config;
 	});

@@ -17,7 +17,7 @@
 
 <script>
 export default {
-	name: 'fixButton',
+	name: 'FixButton',
 	props: {
 		idResize: {
 			type: String,

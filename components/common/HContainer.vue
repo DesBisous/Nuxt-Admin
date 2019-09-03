@@ -14,7 +14,7 @@
 
 <script>
 export default {
-	name: 'hContainer',
+	name: 'HContainer',
 	props: {
 		title: {
 			type: String,

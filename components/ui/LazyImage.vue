@@ -16,7 +16,7 @@
 
 <script>
 export default {
-	name: 'lazyImage',
+	name: 'LazyImage',
 	props: {
 		src: {
 			default: '',

@@ -17,7 +17,7 @@ import { mapGetters } from 'vuex';
 import { getItemByRecursion } from '~/lib/common';
 
 export default {
-	name: 'breadcrumb',
+	name: 'Breadcrumb',
 	computed: {
 		...mapGetters({
 			system: 'tabs/system',

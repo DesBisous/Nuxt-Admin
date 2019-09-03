@@ -1,21 +1,28 @@
 <template>
 	<el-upload
 		v-loading="loading"
-		class="avatar-uploader"
-		:class="avatarSize"
+		:class="[
+			avatarSize,
+			uploadType === 'img' ? 'avatar-uploader' : 'button-uploader',
+		]"
 		:drag="drag"
-		:auto-upload="autoUpload"
 		:disabled="disabled"
 		:action="uploadUrl"
 		:headers="headers"
-		:show-file-list="false"
-		:on-preview="handleAvatarPreview"
+		:show-file-list="true"
 		:on-success="handleAvatarSuccess"
 		:on-error="handleAvatarError"
 		:before-upload="beforeAvatarUpload"
 	>
-		<img v-if="imageUrl" :src="imageUrl" class="avatar" />
-		<i v-else class="el-icon-plus avatar-uploader-icon"></i>
+		<template v-if="uploadType === 'img'">
+			<img v-if="imageUrl" :src="imageUrl" class="avatar" />
+			<i v-else class="el-icon-plus avatar-uploader-icon"></i>
+		</template>
+		<template v-else>
+			<el-button type="primary" size="small" icon="ios-cloud-upload-outline">{{
+				autoUpload ? '上传文件' : '选取文件'
+			}}</el-button>
+		</template>
 	</el-upload>
 </template>
 <script>
@@ -23,16 +30,20 @@ const requestHeaders = {
 	Accept: 'application/json',
 };
 export default {
-	name: 'upload',
+	name: 'Upload',
 	props: {
 		// 如果使用七牛的服务器，那个就去看 https://github.com/PanJiaChen/vue-element-admin 项目
 		uploadUrl: {
 			type: String,
 			default: 'https://jsonplaceholder.typicode.com/posts/',
 		},
+		uploadType: {
+			type: String,
+			default: 'img',
+		},
 		fileType: {
 			type: String,
-			default: 'image',
+			default: '*',
 		},
 		imageUrl: {
 			type: String,
@@ -65,7 +76,7 @@ export default {
 		};
 	},
 	methods: {
-		handleAvatarPreview(file) {
+		handleFileComplete(file) {
 			this.$emit('uploadCallBack', file);
 		},
 		handleAvatarSuccess(res, file) {
@@ -74,28 +85,37 @@ export default {
 				this.$emit('uploadCallBack', file, res.data);
 				return;
 			}
-			this.$message(res);
+			if (res.errMsg) {
+				this.$message.error(res.errMsg);
+			}
 		},
 		handleAvatarError(error) {
 			this.loading = false;
 			this.$message.error(`文件上传失败[${error.status}]`);
 		},
 		beforeAvatarUpload(file) {
-			const isRightType = file.type.indexOf(this.fileType) !== -1;
-			const isLt10M = file.size / 1024 / 1024 < 10;
-			if (!isRightType) {
-				this.$message('文件格式不正确');
+			// 文件格式判断
+			const nameSplit = file.name.split('.');
+			const type = nameSplit[nameSplit.length - 1];
+			const fileType = this.fileType.split(',');
+			const isType = fileType.includes(type);
+			if (this.fileType !== '*' && !isType) {
+				this.$message.error(`请选择 [${this.fileType}] 格式文件`);
+				return false;
 			}
+			// 文件大小判断
+			const isLt10M = file.size / 1024 / 1024 < 10;
 			if (!isLt10M) {
-				this.$message('文件大小不得超过10M');
+				this.$message.error('文件大小不得超过10M');
+				return false;
 			}
 			this.loading = true;
-			// 接口可以传了，就把这里的方法调用去掉
-			this.$emit('uploadCallBack', file);
 			setTimeout(() => {
 				this.loading = false;
 			}, 1000);
-			return isRightType && isLt10M && false;
+			// 不自动 ajax 上传文件时返还已选择的文件信息
+			!this.autoUpload && this.handleFileComplete(file);
+			return this.autoUpload;
 		},
 	},
 };
@@ -172,5 +192,8 @@ export default {
 			line-height: 108px;
 		}
 	}
+}
+.button-uploader {
+	display: inline-block;
 }
 </style>

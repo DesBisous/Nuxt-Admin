@@ -4,7 +4,7 @@ import { mapActions } from 'vuex';
 import { getItemByRecursion } from '~/lib/common';
 
 export default {
-	name: 'sideBar',
+	name: 'SideBar',
 	props: {
 		_key: {
 			type: String,

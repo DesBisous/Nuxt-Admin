@@ -22,7 +22,7 @@
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
-	name: 'tabs',
+	name: 'Tabs',
 	computed: {
 		...mapGetters({
 			tabs: 'tabs/tabs',

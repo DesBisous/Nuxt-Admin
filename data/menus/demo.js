@@ -19,4 +19,14 @@ export default [
 		},
 		children: [],
 	},
+	{
+		path: '/example/demo/excel',
+		name: 'example-demo-excel',
+		meta: {
+			title: 'Excel',
+			icon: 'excel',
+			keepAlive: true,
+		},
+		children: [],
+	},
 ];

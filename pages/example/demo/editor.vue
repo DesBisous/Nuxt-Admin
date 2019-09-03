@@ -5,7 +5,6 @@
 				<Editor :html.sync="htmlData" :text.sync="textData"></Editor>
 			</NoSSR>
 			<br />
-			<div class="qww"></div>
 			<el-button type="primary" @click="onClick">显示内容</el-button>
 		</HContainer>
 		<HContainer title="内容展示">
@@ -39,8 +38,4 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-.qww {
-	height: 800px;
-}
-</style>
+<style lang="less" scoped></style>

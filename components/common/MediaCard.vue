@@ -28,7 +28,7 @@ import HContainer from '~/components/common/HContainer';
 import LazyImage from '~/components/ui/LazyImage';
 
 export default {
-	name: 'mediaCard',
+	name: 'MediaCard',
 	components: {
 		LazyImage,
 		HContainer,

@@ -35,7 +35,6 @@ export default {
 		link: [
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
 			{ rel: 'stylesheet', href: '/css/reset.css' },
-			{ rel: 'stylesheet', href: '/css/animate.css' },
 		],
 	},
 

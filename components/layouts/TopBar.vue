@@ -97,7 +97,7 @@ import LightLine from '~/components/ui/LightLine';
 import LazyImage from '~/components/ui/LazyImage';
 
 export default {
-	name: 'topBar',
+	name: 'TopBar',
 	components: {
 		LightLine,
 		LazyImage,

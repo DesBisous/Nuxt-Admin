@@ -7,7 +7,7 @@
 
 <script>
 export default {
-	name: 'bfooter',
+	name: 'BFooter',
 	props: {
 		absolute: {
 			type: Boolean,

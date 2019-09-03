@@ -1,7 +1,7 @@
 {
-	"name": "safety-center",
+	"name": "nuxt-admin",
 	"version": "1.0.0",
-	"description": "Sykroam_安全中心_v1.0.0",
+	"description": "Nuxt_Admin_v1.0.0",
 	"author": "晓滨 <919624732@qq.com>",
 	"private": true,
 	"scripts": {
@@ -23,7 +23,8 @@
 		"qs": "^6.7.0",
 		"vue-i18n": "^8.11.2",
 		"vuescroll": "^4.13.0",
-		"wangeditor": "^3.1.1"
+		"wangeditor": "^3.1.1",
+		"xlsx": "^0.15.1"
 	},
 	"devDependencies": {
 		"babel-eslint": "^10.0.1",
